@@ -1,11 +1,11 @@
+var _			      = require('lodash');
 var express     = require('express');
 var bodyParser	= require('body-parser');
-var morgan		= require('morgan');
+var morgan		  = require('morgan');
 var mongoose    = require('mongoose');
-var jwt			= require('jsonwebtoken');
-var config		= require('./config');
+var jwt			    = require('jsonwebtoken');
+var config		  = require('./config');
 var moment      = require('moment');
-var _			= require('lodash');
 var AuthLogs    = require('./app/models/auth_logs');
 
 var app         = exports.app = express();
@@ -73,6 +73,40 @@ apiRoutes.post('/authenticate', function(req, res) {
       });
     });
 	}
+});
+
+// Token validation middleware
+apiRoutes.use(function(req, res, next) {
+  var token =  req.headers['x-access-token'];
+
+  if (token) {
+    jwt.verify(token, app.get('apiSecret'), function(error, decoded) {      
+      if (error) {
+        return res.json({ success: false, message: 'Token validation failed!' });    
+      } else {
+        // apply token to other routes
+        req.decoded = decoded;    
+        next();
+      }
+    });
+  } else {
+    return res.status(403).send({ 
+        success: false, 
+        message: 'Missing token!' 
+    });
+  }
+});
+
+apiRoutes.get('/auth/attempts', function(req, res) {
+  AuthLogs.find({}, function(err, attempts) {
+    var result = {};
+    
+    attempts.forEach(function(attempt) {
+      result[attempt._id] = attempt;
+    });
+
+    res.json({ result: result });
+  });
 });
 
 app.use('/api', apiRoutes);
