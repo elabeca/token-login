@@ -17,14 +17,12 @@
         })();
  
         function login() {
-          vm.dataLoading = true;
           AuthenticationService.login(vm.username, vm.password, function (response) {
               if (response.success) {
                 AuthenticationService.setToken(response.token);
                 $location.path('/secure/');
               } else {
                 console.log(JSON.stringify(response));
-                vm.dataLoading = false;
               }
           });
         };

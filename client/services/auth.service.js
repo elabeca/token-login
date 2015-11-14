@@ -32,31 +32,31 @@
             //         });
             // }, 1000);
  
-            $http.post('http://localhost/api/authenticate:8080', { username: username, password: password })
+            $http.post('/api/authenticate', { username: username, password: password })
                 .error(function(response) {
-                  console.log(JSON.stringify(response));
+                  console.log('ERROR Authenticating!');
                 })
                 .success(function (response) {
-                  console.log(JSON.stringify(response));
+                  console.log('SUCCESS Authenticating!');
                   callback(response);
                 });
         }
  
         function setToken(token) {
-            $rootScope.globals = {
-                auth: {
-                    token: token
-                }
-            };
- 
-            $http.defaults.headers.common['x-access-token'] = token;
-            $cookieStore.put('globals', $rootScope.globals);
+          $rootScope.globals = {
+              auth: {
+                  token: token
+              }
+          };
+
+          $http.defaults.headers.common['x-access-token'] = token;
+          $cookieStore.put('globals', $rootScope.globals);
         }
  
         function clearToken() {
-            $rootScope.globals = {};
-            $cookieStore.remove('globals');
-            $http.defaults.headers.common['x-access-token'] = '';
+          $rootScope.globals = {};
+          $cookieStore.remove('globals');
+          $http.defaults.headers.common['x-access-token'] = '';
         }
     }
  

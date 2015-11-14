@@ -1,12 +1,11 @@
-var _			= require('lodash');
+var _			      = require('lodash');
 var express     = require('express');
 var bodyParser	= require('body-parser');
-var morgan		= require('morgan');
+var morgan		  = require('morgan');
 var mongoose    = require('mongoose');
-var jwt			= require('jsonwebtoken');
-var config		= require('./config');
-var moment		= require('moment');
-var path    = require("path");
+var jwt			    = require('jsonwebtoken');
+var config		  = require('./config');
+var moment		  = require('moment');
 var AuthLogs    = require('./app/models/auth_logs');
 
 var app         = exports.app = express();
@@ -18,9 +17,7 @@ app.set('apiSecret', config.secret);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static('client'));
-app.use(express.static('client/login'));
-app.use(express.static('client/content'));
+app.use(express.static(process.cwd() + '/client'));
 
 // Console logger
 app.use(morgan('dev'));
@@ -60,6 +57,9 @@ apiRoutes.get('/login', function(req, res) {
 })
 
 apiRoutes.post('/authenticate', function(req, res) {
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 	var username = validateUser(req.body.username, req.body.password);
 
