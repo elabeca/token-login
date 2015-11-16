@@ -45,7 +45,8 @@ function setupServer(workerId) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   console.log(__dirname + '/../client');
-  app.use(express.static(__dirname + '/../client'));
+  // app.use(express.static(__dirname + '/../client'));
+  app.use('/', express.static(__dirname + '/../client'));
 
   // Console logger
   app.use(morgan('dev'));
@@ -53,10 +54,6 @@ function setupServer(workerId) {
   var apiRoutes = express.Router();
 
   // Routes
-  app.get('/', function(req, res) {
-    res.render(__dirname + '/../client/index.html');
-  });
-
   apiRoutes.post('/authenticate', function(req, res) {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var username = authentication.validateUser(req.body.username, req.body.password);
