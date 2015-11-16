@@ -10,7 +10,7 @@
     function AttemptsController($location, AuthenticationService) {
       var vm = this;
 
-      vm.attempts = attempts;
+      vm.attempts = getAttempts;
 
       function getAttempts() {
         AuthenticationService.getAllAttempts(function (response) {
