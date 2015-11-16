@@ -1,5 +1,9 @@
 # Token Login Node / AngularJS Demo #
 
+## DEMO ##
+
+Try out the online [Demo here!](https://cryptic-forest-2028.herokuapp.com)
+
 ## Installation ##
 
 Ensure to run this demo with node v5.0.0. You may need to `npm install -g bower`.
