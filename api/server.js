@@ -47,6 +47,7 @@ function setupServer(workerId) {
   console.log(__dirname + '/../client');
   // app.use(express.static(__dirname + '/../client'));
   app.use('/', express.static(__dirname + '/../client'));
+  app.use('/bower_components', express.static(__dirname + '/../client/bower_components'));
 
   // Console logger
   app.use(morgan('dev'));
