@@ -44,7 +44,7 @@ function setupServer(workerId) {
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.use(express.static(__dirname + '../client'));
+  app.use(express.static(__dirname + '/../client'));
 
   // Console logger
   app.use(morgan('dev'));
