@@ -39,6 +39,7 @@ Must supply: x-access-token
 
 This is just a demo and work in progress. Nice to have are:
 
+- fix attempts api call
 - finish up the attempts page
 - integration with gulp or grunt
 - add to a travis build hook
