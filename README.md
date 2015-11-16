@@ -37,9 +37,9 @@ Must supply: x-access-token
 
 ## To Do ##
 
-This is just a demo and work in progress. Nice to have are:
+This is just a demo and work in progress. Still need to or some nice to have:
 
-- fix attempts api call
+- add attempts e2e / unit tests
 - finish up the attempts page
 - integration with gulp or grunt
 - add to a travis build hook

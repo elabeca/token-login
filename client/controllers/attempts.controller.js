@@ -10,15 +10,15 @@
     function AttemptsController($location, AuthenticationService) {
       var vm = this;
 
-      vm.attempts = getAttempts();
+      vm.attempts = getAllAttempts();
 
-      function getAttempts() {
-        AuthenticationService.getAllAttempts(function (response) {
-            if (response.success) {
-              console.log(JSON.stringify(response));
+      function getAllAttempts() {
+        AuthenticationService.getAllAttempts(function(response) {
+            if (response.status == 200) {
+              console.log(response.data.result);
               return response.data.result;
             } else {
-              console.log(response);
+              console.log("oops!" + JSON.stringify(response));
             }
         });
       };

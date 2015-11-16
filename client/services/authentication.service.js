@@ -16,29 +16,24 @@
  
         return service;
  
-        function login(username, password, callback) {
+        function login(username, password, cb) {
           $http({method: 'POST', url: '/api/authenticate', data: { username: username, password: password }})
             .then(function(response) {
-              console.log("success");
-              console.log(response.status);
-              callback(response);
+              cb(response);
             }, function(response) {
-              console.log("error");
-              console.log(response.status);
-              callback(response);
+              cb(response);
           });
         }
 
-        function getAllAttempts(callback) {
-          $http.defaults.headers.common['x-access-token'] = $rootScope.globals.auth.token;
-          console.log("$rootScope.globals.auth.token: " +  $rootScope.globals.auth.token);
+        function getAllAttempts(cb) {
+          // $http.defaults.headers.common['x-access-token'] = $rootScope.globals.auth.token;
           $http({method: 'GET', url: '/api/auth/attempts'})
             .then(function(response) {
               console.log(response.status);
-              callback(response);
+              cb(response);
             }, function(response) {
               console.log(response.status);
-              callback(response);
+              cb(response);
           });
         }
  

@@ -28,21 +28,15 @@ Authentication.prototype.logAuthentication = function(username, ip, isSuccess, c
   log.action = isSuccess == true ? 'AUTH_SUCCESS' : 'AUTH_FAILURE';
   log.username = username;
 
-  log.save(function () {
+  log.save(function() {
     cb();
   });
 };
 
 // Retrieving all authentication attempts previously recorded in MongoDB
-Authentication.prototype.getAttempts = function() {
+Authentication.prototype.getAttempts = function(cb) {
   AuthLogsModel.find({}, function(err, attempts) {
-    var result = {};
-    
-    attempts.forEach(function(attempt) {
-      result[attempt._id] = attempt;
-    });
-
-    return result;
+    cb(err, attempts);
   });
 };
 

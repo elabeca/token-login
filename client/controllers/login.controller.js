@@ -22,7 +22,7 @@
                 AuthenticationService.setToken(response.data.token);
                 $location.path('/attempts/');
               } else {
-                console.log("Authentication failed: " + response.status);
+                console.log(`Authentication failed: ${response.status}`);
                 vm.error = "Authentication failed! Please try again.";
               }
           });

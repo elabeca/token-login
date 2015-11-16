@@ -98,8 +98,15 @@ function setupServer(workerId) {
   });
 
   apiRoutes.get('/auth/attempts', function(req, res) {
-    let result = authentication.getAttempts();
-    res.json({ result: result });
+    let result = authentication.getAttempts(function(err, attempts) {
+      var result = {};
+      attempts.forEach(function(attempt) {
+          result[attempt._id] = attempt;
+      });
+
+      console.log(result);
+      res.json({ result: result });
+    });
   });
 
   app.use('/api', apiRoutes);
