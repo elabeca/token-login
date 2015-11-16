@@ -23,6 +23,7 @@
                 $location.path('/attempts/');
               } else {
                 console.log("Authentication failed: " + response.status);
+                vm.error = "Authentication failed! Please try again.";
               }
           });
         };

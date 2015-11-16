@@ -1,4 +1,4 @@
-<div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+<div ng-show="vm.error" class="alert alert-danger" style="margin-top: 50px">{{vm.error}}</div>
 <form class="login" name="form" ng-submit="vm.login()" role="form">
     <h4>Welcome</h4>
     <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
