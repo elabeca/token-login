@@ -6,8 +6,8 @@ describe('login to the token-login demo site', function() {
 
     browser.get(`http://localhost:${port}`);
 
-    element(by.model('vm.username')).sendKeys('user');
-    element(by.model('vm.password')).sendKeys('password');
+    element(by.model('loginCtrl.username')).sendKeys('user');
+    element(by.model('loginCtrl.password')).sendKeys('password');
 
     element(by.css('[value="login"]')).click();
 
@@ -19,8 +19,8 @@ describe('login to the token-login demo site', function() {
 
     browser.get(`http://localhost:${port}`);
 
-    element(by.model('vm.username')).sendKeys('admin');
-    element(by.model('vm.password')).sendKeys('wrongpassword');
+    element(by.model('loginCtrl.username')).sendKeys('admin');
+    element(by.model('loginCtrl.password')).sendKeys('wrongpassword');
 
     element(by.css('[value="login"]')).click();
 

@@ -1,12 +1,12 @@
-<div ng-show="vm.error" class="alert alert-danger" style="margin-top: 50px">{{vm.error}}</div>
-<form class="login" name="form" ng-submit="vm.login()" role="form">
+<div ng-show="loginCtrl.error" class="alert alert-danger" style="margin-top: 50px">{{loginCtrl.error}}</div>
+<form class="login" name="form" ng-submit="loginCtrl.signIn()" role="form">
     <h4>Welcome</h4>
     <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
-        <input type="text" name="username" class="login-input" placeholder="username" ng-model="vm.username"autofocus required>
+        <input type="text" name="username" class="login-input" placeholder="username" ng-model="loginCtrl.username"autofocus required>
         <span ng-show="form.username.$dirty && form.username.$error.required" class="white">Username is required</span>
     </div>
     <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
-        <input type="password" name="password" id="password" class="login-input" placeholder="" ng-model="vm.password" required>
+        <input type="password" name="password" id="password" class="login-input" placeholder="" ng-model="loginCtrl.password" required>
         <span ng-show="form.password.$dirty && form.password.$error.required" class="white">Password is required</span>
     </div>
     <button type="submit" ng-disabled="form.$invalid" class="login-submit" value="login">Login</button>

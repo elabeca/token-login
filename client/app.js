@@ -12,12 +12,12 @@
             .when('/login', {
                 controller: 'LoginController',
                 templateUrl: 'views/login.view.html',
-                controllerAs: 'vm'
+                controllerAs: 'loginCtrl'
             })
             .when('/attempts', {
                 controller: 'AttemptsController',
                 templateUrl: 'views/attempts.view.html',
-                controllerAs: 'vm'
+                controllerAs: 'attemptsCtrl'
             })
             .otherwise({ redirectTo: '/login' });
     }

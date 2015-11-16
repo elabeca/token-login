@@ -8,20 +8,20 @@
  
     AttemptsController.$inject = ['$location', 'AuthenticationService'];
     function AttemptsController($location, AuthenticationService) {
-      var vm = this;
+      var attempts = this;
 
-      vm.attempts = getAllAttempts();
-
-      function getAllAttempts() {
+      attempts.getAllAttempts = function() {
         AuthenticationService.getAllAttempts(function(response) {
             if (response.status == 200) {
               console.log(response.data.result);
               return response.data.result;
             } else {
-              console.log("oops!" + JSON.stringify(response));
+              console.log(`Oops! Problem retrieving attempts. Status code = ${response.status}`);
+              return {};
             }
         });
       };
+      
     }
 
 })();
