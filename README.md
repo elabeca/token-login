@@ -2,8 +2,11 @@
 
 ## Installation ##
 
-Ensure to run this demo with node v5.0.0
+Ensure to run this demo with node v5.0.0. You may need to `npm install -g bower`.
 
+	$ cd client
+	$ bower install
+	$ cd ..
 	$ npm install
 
 ## Usage - (local) ##
