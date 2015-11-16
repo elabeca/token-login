@@ -44,18 +44,7 @@ function setupServer(workerId) {
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  console.log(__dirname + '/../client');
-  // // app.use(express.static(__dirname + '/../client'));
-  // app.use('/', express.static(__dirname + '/../client'));
-  // app.use('/bower_components', express.static(__dirname + '/../client/bower_components'));
-
-  app.get('/', function(request, response) {
-      response.sendfile(__dirname + '/../client/index.html');
-  }).configure(function() {
-      app.use('/images', express.static(__dirname + '/images'));
-      app.use('/', express.static(__dirname + '/../client'));
-      // app.use('/bower_components', express.static(__dirname + '/../client/bower_components'));
-  }).listen(port);
+  app.use(express.static(__dirname + '/../client'));
 
   // Console logger
   app.use(morgan('dev'));
