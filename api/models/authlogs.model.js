@@ -1,8 +1,8 @@
 'use strict'
 
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var authLogs = mongoose.Schema({
+let authLogs = mongoose.Schema({
 	ip: String,
 	datetime: String,
 	action: String,

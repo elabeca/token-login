@@ -1,8 +1,11 @@
-var request = require('supertest');
+'use strict'
 
-var app = require("../server").app;
+let request = require('supertest');
+
+let app = require("../../../api/server").app;
 
 describe('POST /api/authenticate with invalid credentials', function() {
+  this.timeout(25000);
   it('responds with a 401 Unauthorized', function(done) {
     var user = { username : 'elie', password : 'password' };
     request(app)
@@ -15,6 +18,7 @@ describe('POST /api/authenticate with invalid credentials', function() {
 });
 
 describe('POST /api/authenticate with correct username but invalid password', function() {
+  this.timeout(25000);
   it('responds with a 401 Unauthorized', function(done) {
     var user = { username : 'admin', password : 'wrongpassword' };
     request(app)
@@ -27,6 +31,7 @@ describe('POST /api/authenticate with correct username but invalid password', fu
 });
 
 describe('GET /api/auth/attempts without a token', function() {
+  this.timeout(25000);
   it('responds with a 403 Forbidden', function(done) {
     request(app)
       .get('/api/auth/attempts')
@@ -37,6 +42,7 @@ describe('GET /api/auth/attempts without a token', function() {
 });
 
 describe('POST /api/authenticate with correct credentials', function() {
+  this.timeout(25000);
   it('responds with a 200', function(done) {
     var user = { username : 'manager', password : 'password' };
     request(app)
@@ -49,6 +55,7 @@ describe('POST /api/authenticate with correct credentials', function() {
 });
 
 describe('GET /api/auth/attempts with a valid token', function() {
+  this.timeout(25000);
   it('responds with a 200', function(done) {
     var user = { username : 'manager', password : 'password' };
 

@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
- 
+
     angular
         .module('app')
         .controller('LoginController', LoginController);
@@ -18,11 +18,11 @@
  
         function login() {
           AuthenticationService.login(vm.username, vm.password, function (response) {
-              if (response.success) {
+              if (response.status == 200) {
                 AuthenticationService.setToken(response.token);
-                $location.path('/secure/');
+                $location.path('/attempts/');
               } else {
-                console.log(JSON.stringify(response));
+                console.log("Authentication failed: " + response.status);
               }
           });
         };

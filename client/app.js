@@ -11,12 +11,12 @@
         $routeProvider
             .when('/login', {
                 controller: 'LoginController',
-                templateUrl: 'login/login.view.html',
+                templateUrl: 'views/login.view.html',
                 controllerAs: 'vm'
             })
-            .when('/secure', {
-                controller: 'SecureController',
-                templateUrl: 'secure/secure.view.html',
+            .when('/attempts', {
+                controller: 'AttemptsController',
+                templateUrl: 'views/attempts.view.html',
                 controllerAs: 'vm'
             })
             .otherwise({ redirectTo: '/login' });
@@ -24,16 +24,16 @@
  
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
     function run($rootScope, $location, $cookieStore, $http) {
-        // keeping the user logged in
+        // Keeping the user logged in
         $rootScope.globals = $cookieStore.get('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        if ($rootScope.globals.auth) {
+            $http.defaults.headers.common['x-access-token'] = $rootScope.globals.auth.token;
         }
  
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            // setting up restricted page redirect
-            var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
-            var loggedIn = $rootScope.globals.currentUser;
+            // Setting up restricted page redirect
+            var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+            var loggedIn = $rootScope.globals.auth;
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }
