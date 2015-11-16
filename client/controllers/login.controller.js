@@ -19,7 +19,7 @@
         function login() {
           AuthenticationService.login(vm.username, vm.password, function (response) {
               if (response.status == 200) {
-                AuthenticationService.setToken(response.token);
+                AuthenticationService.setToken(response.data.token);
                 $location.path('/attempts/');
               } else {
                 console.log("Authentication failed: " + response.status);

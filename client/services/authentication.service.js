@@ -10,6 +10,7 @@
         var service = {};
  
         service.login = login;
+        service.getAllAttempts = getAllAttempts;
         service.setToken = setToken;
         service.clearToken = clearToken;
  
@@ -29,7 +30,9 @@
         }
 
         function getAllAttempts(callback) {
-          $http({method: 'GET', url: '/api/attempts'})
+          $http.defaults.headers.common['x-access-token'] = $rootScope.globals.auth.token;
+          console.log("$rootScope.globals.auth.token: " +  $rootScope.globals.auth.token);
+          $http({method: 'GET', url: '/api/auth/attempts'})
             .then(function(response) {
               console.log(response.status);
               callback(response);
