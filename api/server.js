@@ -38,7 +38,7 @@ function setupServer(workerId) {
   let app             = exports.app = express();
 
   // Configuration
-  let port = process.env.PORT || 80;
+  let port = process.env.PORT || 8080;
   mongoose.connect(config.database);
   app.set('apiSecret', config.secret);
 

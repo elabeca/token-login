@@ -3,7 +3,7 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test PORT=8081 mocha test/api/features; protractor test/protractor.conf.js",
-    "start": "NODE_ENV=local PORT=8080 node api/server.js"
+    "start": "NODE_ENV=local node api/server.js"
   },
   "dependencies": {
     "body-parser": "1.14.1",
