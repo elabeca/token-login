@@ -10,6 +10,8 @@
     function AttemptsController($location, AuthenticationService) {
       var attemptsCtrl = this;
 
+      $("video").hide();
+
       attemptsCtrl.allAttempts = {};
 
       attemptsCtrl.getAll = function() {

@@ -174,3 +174,12 @@ input, textarea, select, label {
 .login-help > a:hover {
   text-decoration: underline;
 }
+.bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}

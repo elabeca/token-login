@@ -10,6 +10,8 @@
     function LoginController($location, AuthenticationService) {
         var loginCtrl = this;
 
+        $("video").show();
+
         (function initController() {
           AuthenticationService.clearToken();
         })();
