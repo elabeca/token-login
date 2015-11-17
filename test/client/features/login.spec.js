@@ -1,11 +1,27 @@
 'use strict'
 
-describe('login to the token-login demo site', function() {
+describe('user login', function() {
+  let port = (process.env.PORT || '8080');
+  
+  beforeEach(function() {
+    browser.get(`http://localhost:${port}/#/login/`);
+  });
+  
+  it('login button should be disabled if no values present in username or password input boxes', function() {
+    var btn = element(by.css('[value="login"]'));
+    expect(browser.isElementPresent(btn)).toBe(true);
+    expect(btn.isEnabled()).toBe(false);
+  });
+
+  it('login button should be enabled if values present in username and password input boxes', function() {
+    element(by.model('loginCtrl.username')).sendKeys('user');
+    element(by.model('loginCtrl.password')).sendKeys('password');
+    var btn = element(by.css('[value="login"]'));
+    expect(browser.isElementPresent(btn)).toBe(true);
+    expect(btn.isEnabled()).toBe(true);
+  });
+
   it('should login successfuly', function() {
-    let port = (process.env.PORT || '8080');
-
-    browser.get(`http://localhost:${port}`);
-
     element(by.model('loginCtrl.username')).sendKeys('user');
     element(by.model('loginCtrl.password')).sendKeys('password');
 
@@ -15,10 +31,6 @@ describe('login to the token-login demo site', function() {
   });
 
   it('should fail to login', function() {
-    let port = (process.env.PORT || '8080');
-
-    browser.get(`http://localhost:${port}`);
-
     element(by.model('loginCtrl.username')).sendKeys('admin');
     element(by.model('loginCtrl.password')).sendKeys('wrongpassword');
 
