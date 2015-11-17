@@ -44,7 +44,7 @@ Must supply: x-access-token
 This is just a demo and work in progress. Still need to or some nice to have:
 
 - add more unit test coverage (both api and client)
-- finish up the attempts page
+- finish up the attempts page (paging, search)
 - integration with gulp or grunt
 - add to a travis build hook
 - use LiveScript or CoffeeScript
