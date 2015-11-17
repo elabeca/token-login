@@ -12,17 +12,18 @@
 
       $("video").hide();
 
-      attemptsCtrl.allAttempts = {};
+      attemptsCtrl.allAttempts = [];
 
       attemptsCtrl.getAll = function() {
         AuthenticationService.getAllAttempts(function(response) {
             if (response.status == 200) {
-              console.log(response.data.result);
-              attemptsCtrl.allAttempts = response.data.result;
+              attemptsCtrl.allAttempts = _.map(response.data.result, function(x) { return x; });
             } else {
               console.log(`Oops! Problem retrieving attempts. Status code = ${response.status}`);
-              attemptsCtrl.error = "Unauthorized access!";
-              attemptsCtrl.allAttempts = {};
+              if (response.status == 403) {
+                attemptsCtrl.error = "Unauthorized access!";
+              }
+              attemptsCtrl.allAttempts = [];
             }
         });
       };

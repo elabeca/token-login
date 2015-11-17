@@ -28,10 +28,8 @@
         function getAllAttempts(cb) {
           $http({method: 'GET', url: '/api/auth/attempts'})
             .then(function(response) {
-              console.log(response.status);
               cb(response);
             }, function(response) {
-              console.log(response.status);
               cb(response);
           });
         }

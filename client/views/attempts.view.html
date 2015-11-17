@@ -1,6 +1,13 @@
 <h1>Authentication attempts</h1>
 <div ng-show="attemptsCtrl.error" class="alert alert-danger" style="margin-top: 50px">{{attemptsCtrl.error}}</div>
 <div ng-show="!attemptsCtrl.error">
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="search">Search: </label>
+      <input ng-model="search" type="text" class="form-control" id="search" placeholder="Search...">
+    </div>
+  </form>
+  <br/>
   <ul>
     <table class="table table-bordered">
       <thead>
@@ -17,7 +24,7 @@
           Username
         </th>
       </thead>
-      <tr ng-repeat="attempt in attemptsCtrl.allAttempts">
+      <tr ng-repeat="attempt in attemptsCtrl.allAttempts | filter:search">
         <td>
           {{attempt.datetime}}
         </td>
