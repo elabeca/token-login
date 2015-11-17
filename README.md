@@ -4,9 +4,13 @@
 
 Try out the online [Demo here!](https://cryptic-forest-2028.herokuapp.com)
 
+## Before installing locally ##
+
+Ensure your computer has access to the following URL: ds047524.mongolab.com:47524
+
 ## Installation ##
 
-Ensure to run this demo with node v5.0.0. You may need to `npm install -g bower`.
+Ensure to run this demo locally with node v5.0.0. You may need to `npm install -g bower`.
 
 	$ cd client
 	$ bower install
@@ -39,10 +43,9 @@ Must supply: x-access-token
 
 This is just a demo and work in progress. Still need to or some nice to have:
 
-- add attempts e2e / unit tests
+- add more unit test coverage (both api and client)
 - finish up the attempts page
 - integration with gulp or grunt
 - add to a travis build hook
 - use LiveScript or CoffeeScript
-- add more unit test coverage
 - add credentials persistence in MongoDB + bcrypt hash validation

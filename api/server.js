@@ -85,7 +85,7 @@ function setupServer(workerId) {
           return res.json({ success: false, message: 'Token validation failed!' });    
         } else {
           // apply token to other routes
-          req.decoded = decoded;    
+          req.decoded = decoded;
           next();
         }
       });
@@ -98,15 +98,23 @@ function setupServer(workerId) {
   });
 
   apiRoutes.get('/auth/attempts', function(req, res) {
-    let result = authentication.getAttempts(function(err, attempts) {
-      var result = {};
-      attempts.forEach(function(attempt) {
-          result[attempt._id] = attempt;
-      });
+    console.log(`req.decoded = ${req.decoded}`);
+    if (req.decoded === 'admin') {
+      let result = authentication.getAttempts(function(err, attempts) {
+        var result = {};
+        attempts.forEach(function(attempt) {
+            result[attempt._id] = attempt;
+        });
 
-      console.log(result);
-      res.json({ result: result });
-    });
+        console.log(result);
+        res.json({ result: result });
+      });
+    } else {
+      return res.status(403).send({ 
+          success: false, 
+          message: 'Unauthorized!' 
+      });
+    }
   });
 
   app.use('/api', apiRoutes);
