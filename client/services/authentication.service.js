@@ -26,7 +26,6 @@
         }
 
         function getAllAttempts(cb) {
-          // $http.defaults.headers.common['x-access-token'] = $rootScope.globals.auth.token;
           $http({method: 'GET', url: '/api/auth/attempts'})
             .then(function(response) {
               console.log(response.status);
@@ -37,10 +36,11 @@
           });
         }
  
-        function setToken(token) {
+        function setToken(token, username) {
           $rootScope.globals = {
               auth: {
-                  token: token
+                  token: token,
+                  username: username
               }
           };
 

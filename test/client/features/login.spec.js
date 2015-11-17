@@ -21,8 +21,17 @@ describe('user login', function() {
     expect(btn.isEnabled()).toBe(true);
   });
 
-  it('should login successfuly', function() {
-    element(by.model('loginCtrl.username')).sendKeys('user');
+  it('should login successfuly as tester, I should be redirected to a secure page', function() {
+    element(by.model('loginCtrl.username')).sendKeys('tester');
+    element(by.model('loginCtrl.password')).sendKeys('password');
+
+    element(by.css('[value="login"]')).click();
+
+    expect(browser.getCurrentUrl()).toMatch(`http://localhost:${port}/#/secure`);
+  });
+
+  it('should login successfuly as admin, I should be redirected to the attempts page', function() {
+    element(by.model('loginCtrl.username')).sendKeys('admin');
     element(by.model('loginCtrl.password')).sendKeys('password');
 
     element(by.css('[value="login"]')).click();

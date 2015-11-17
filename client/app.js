@@ -19,6 +19,11 @@
                 templateUrl: 'views/attempts.view.html',
                 controllerAs: 'attemptsCtrl'
             })
+            .when('/secure', {
+                controller: 'SecureController',
+                templateUrl: 'views/secure.view.html',
+                controllerAs: 'secureCtrl'
+            })
             .otherwise({ redirectTo: '/login' });
     }
  
@@ -32,8 +37,8 @@
  
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // Setting up restricted page redirect
-            var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-            var loggedIn = $rootScope.globals.auth;
+            let restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+            let loggedIn = $rootScope.globals.auth;
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }

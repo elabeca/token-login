@@ -8,7 +8,7 @@
  
     AttemptsController.$inject = ['$location', 'AuthenticationService'];
     function AttemptsController($location, AuthenticationService) {
-      var attemptsCtrl = this;
+      let attemptsCtrl = this;
 
       $("video").hide();
 
