@@ -1,6 +1,22 @@
 <h1>Authentication attempts</h1>
-
-
-<span> attempts made</span>
-<ul class="unstyled">
-</ul>
+<div ng-show="attemptsCtrl.error" class="alert alert-danger" style="margin-top: 50px">{{attemptsCtrl.error}}</div>
+<div ng-show="!attemptsCtrl.error">
+  <ul>
+    <table class="table table-bordered">
+      <tr ng-repeat="attempt in attemptsCtrl.allAttempts">
+        <td>
+          {{attempt.datetime}}
+        </td>
+        <td>
+          {{attempt.ip}}
+        </td>
+        <td>
+          {{attempt.action}}
+        </td>
+        <td>
+          {{attempt.username}}
+        </td>
+      </tr>
+    </table>
+  </ul>
+</div>

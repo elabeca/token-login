@@ -98,15 +98,12 @@ function setupServer(workerId) {
   });
 
   apiRoutes.get('/auth/attempts', function(req, res) {
-    console.log(`req.decoded = ${req.decoded}`);
     if (req.decoded === 'admin') {
       let result = authentication.getAttempts(function(err, attempts) {
         var result = {};
         attempts.forEach(function(attempt) {
             result[attempt._id] = attempt;
         });
-
-        console.log(result);
         res.json({ result: result });
       });
     } else {
