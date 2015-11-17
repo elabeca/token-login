@@ -3,6 +3,20 @@
 <div ng-show="!attemptsCtrl.error">
   <ul>
     <table class="table table-bordered">
+      <thead>
+        <th>
+          Date / time
+        </th>
+        <th>
+          IP address
+        </th>
+        <th>
+          Action
+        </th>
+        <th>
+          Username
+        </th>
+      </thead>
       <tr ng-repeat="attempt in attemptsCtrl.allAttempts">
         <td>
           {{attempt.datetime}}
