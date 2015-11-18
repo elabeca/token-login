@@ -6,8 +6,8 @@
         .module('app')
         .controller('LoginController', LoginController);
  
-    LoginController.$inject = ['$location', 'AuthenticationService'];
-    function LoginController($location, AuthenticationService) {
+    LoginController.$inject = ['$location', '$log', 'AuthenticationService'];
+    function LoginController($location, $log, AuthenticationService) {
         let loginCtrl = this;
 
         $("video").show();
@@ -26,7 +26,7 @@
                   $location.path('/secure/');
                 }
               } else {
-                console.log(`Authentication failed: ${response.status}`);
+                $log.error(`Authentication failed: ${response.status}`);
                 loginCtrl.error = "Authentication failed! Please try again.";
               }
           });
