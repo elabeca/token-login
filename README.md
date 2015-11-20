@@ -43,8 +43,9 @@ Must supply: x-access-token
 
 This is just a demo and work in progress. Still need to or some nice to have:
 
-- after each integration test run - remove auth attempts created from DB
+- use nock to mock api calls on client e2e tests
 - add more unit test coverage (both api and client)
+- add unit coverage on client services and mock $http
 - finish up the attempts page (server side paging)
 - integration with gulp or grunt
 - add to a travis build hook
